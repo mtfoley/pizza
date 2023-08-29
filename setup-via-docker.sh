@@ -44,10 +44,6 @@ if [[ "$1" = "start" ]]; then
     curl -v -d '{"url":"https://github.com/open-sauced/insights"}' \
         -H "Content-Type: application/json" \
         -X POST http://localhost:8080/bake
-    docker run --rm -it \
-        --network pizza \
-        postgres:15.3-alpine \
-        sh
 fi
 if [[ "$1" = "stop" ]]; then
     docker stop pizza-app
