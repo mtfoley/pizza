@@ -52,6 +52,7 @@ func main() {
 	databaseUser := os.Getenv("DATABASE_USER")
 	databasePwd := os.Getenv("DATABASE_PASSWORD")
 	databaseDbName := os.Getenv("DATABASE_DBNAME")
+	databaseSslMode := os.Getenv("DATABASE_SSLMODE")
 
 	// Env vars for the pizza oven server
 	serverPort := os.Getenv("SERVER_PORT")
@@ -60,7 +61,7 @@ func main() {
 	gitProvider := os.Getenv("GIT_PROVIDER")
 
 	// Initialize the database handler
-	pizzaOven := database.NewPizzaOvenDbHandler(databaseHost, databasePort, databaseUser, databasePwd, databaseDbName)
+	pizzaOven := database.NewPizzaOvenDbHandler(databaseHost, databasePort, databaseUser, databasePwd, databaseDbName, databaseSslMode)
 
 	// Initializes configuration using a provided yaml file
 	config := &server.Config{NeverEvictRepos: make(map[string]bool)}
