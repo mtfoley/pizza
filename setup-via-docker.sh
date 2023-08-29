@@ -41,9 +41,10 @@ if [[ "$1" = "start" ]]; then
         sleep 5
         curl -s --connect-timeout 1 http://localhost:8080/ping && break
     done
-    curl -v -d '{"url":"https://github.com/open-sauced/insights"}' \
+    echo Posting to /bake endpoint with https://github.com/open-sauced/insights
+    curl -d '{"url":"https://github.com/open-sauced/insights"}' \
         -H "Content-Type: application/json" \
-        -X POST http://localhost:8080/bake
+        http://localhost:8080/bake
 fi
 if [[ "$1" = "stop" ]]; then
     docker stop pizza-app
