@@ -39,10 +39,11 @@ if [[ "$1" = "start" ]]; then
     do
         echo Pinging Pizza Oven
         sleep 5
-        curl -s --connect-timeout 1 http://localhost:8080/ping && break
+        curl -s --connect-timeout 1 http://localhost:8080/ping -o /dev/null && \
+            break
     done
     echo Posting to /bake endpoint with https://github.com/open-sauced/insights
-    curl -d '{"url":"https://github.com/open-sauced/insights"}' \
+    curl -s -d '{"url":"https://github.com/open-sauced/insights"}' \
         -H "Content-Type: application/json" \
         http://localhost:8080/bake
 fi
